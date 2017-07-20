@@ -1,11 +1,11 @@
 "use strict"
 const cassandra = require('cassandra-driver');
-var  cassClient  = new cassandra.Client({contactPoints: ['10.0.0.7'],keyspace:'cf_web'}); 
+var  cassClient  = new cassandra.Client({contactPoints: ['10.0.0.7'],keyspace:'keyspaceName'}); 
 
 //This api returns list of shipments 
 exports.get_all_shipments =  function (req,res,next){
 
-    var query ="select status, shipment_data, route_info, geo_fence, monitor_info, provision_data from cf_web.shipment_details";
+    var query ="select * from keyspaceName.tablename";
     var username = "";
     if(req.query.username){
         query += " where created_by = ? ALLOW FILTERING"
@@ -26,12 +26,12 @@ exports.get_all_shipments =  function (req,res,next){
         console.log("got the result ");
     
         if(result != null){
-            console.log("Number of shipments found : " + result.rows.length);
+            console.log("Number of records found : " + result.rows.length);
             res.contentType('application/json');
             res.status(200).send(JSON.stringify(result.rows));
         }
         else{
-            console.log("No shipments found : " );        
+            console.log("No records found : " );        
             console.log("Shutting down...");
         }
     })
