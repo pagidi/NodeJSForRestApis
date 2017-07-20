@@ -1,0 +1,17 @@
+{
+  "name": "package.json",
+  "version": "1.0.0",
+  "description": "Dependencies for node server",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cassandra-driver": "^3.2.2",
+    "package.json": "^2.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "startnode"
+  },
+  "author": "Govardhan Pagidi",
+  "license": "ISC"
+}
